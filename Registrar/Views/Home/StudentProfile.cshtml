@@ -1,0 +1,34 @@
+<h1>Student Profile</h1>
+
+<h3>Name: @Model["student"].GetStudentName()</h3>
+<h3>ID: @Model["student"].GetId()</h3>
+<h3>Enrolment Date: @Model["student"].GetEnrolmentDate()</h3>
+<h3>Courses Enrolled:<br>
+  @foreach (var course in @Model["student"].GetCourses())
+  {
+    @course.GetCourseName()<br>
+  }</h3>
+
+<form class="form-group" action="/student/@Model["student"].GetId()/course/update" method="post">
+  <label for="select-courses">Select Courses:</label>
+  <select class="form-control" name="select-courses">
+
+    @foreach (var courseOffered in Model["courses"])
+    {
+      @if(Model["student"].GetCourses().Contains(courseOffered) == false)
+      {
+        <option value="@courseOffered.GetId()">@courseOffered.GetCourseName()</option>        
+      }
+    }
+
+
+  </select>
+  <button type="submit" name="button">Add Courses</button>
+</form>
+
+<a href="/student/view-all">View All Students</a>
+
+@* <input type="checkbox" name="select-courses" value="@course.GetId()">@course.GetCourseName() *@
+
+
+@* <option value="@course.GetId()">@course.GetCourseName()</option> *@

@@ -1,0 +1,20 @@
+<h1>Course Offered:</h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Course Name</th>
+    <th>Course Number</th>
+  </tr>
+  @foreach (var course in Model)
+  {
+    <tr>
+      <td>@course.GetId()</td>
+      <td>@course.GetCourseName()</td>
+      <td>@course.GetCourseNumber()</td>
+    </tr>
+  }
+</table>
+
+<a href="/course/add">Add Course</a>
+<a href="/">Home Page</a>
